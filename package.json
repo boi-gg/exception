@@ -19,10 +19,12 @@
     "build": "tsdown",
     "dev": "tsdown --watch",
     "test": "vitest run",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@vitest/coverage-v8": "3.2.4",
+    "prettier": "^3.6.2",
     "tsdown": "^0.14.2",
     "vitest": "^3.2.4"
   }

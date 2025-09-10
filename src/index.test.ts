@@ -103,11 +103,7 @@ describe("Exception", () => {
 
     let wasHandled = false;
     try {
-      throw new NotFoundError(
-        "Resource not found",
-        { reqPath: "/api/resource" },
-        new Error("Cause error"),
-      );
+      throw new NotFoundError("Resource not found", { reqPath: "/api/resource" }, new Error("Cause error"));
     } catch (error) {
       if (NotFoundError.match(error)) {
         wasHandled = true;

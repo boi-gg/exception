@@ -7,12 +7,7 @@ export class Exception extends Error {
   public readonly cause?: ExceptionCause;
   public readonly name: string;
 
-  private constructor(
-    message: string,
-    meta?: ExceptionMeta,
-    cause?: ExceptionCause,
-    name = "Exception"
-  ) {
+  private constructor(message: string, meta?: ExceptionMeta, cause?: ExceptionCause, name = "Exception") {
     super(message || "UNKNOWN EXCEPTION OCCURED", { cause });
     this.message = message || "UNKNOWN EXCEPTION OCCURED";
     this.meta = meta;
@@ -47,7 +42,7 @@ export class Exception extends Error {
       constructor(
         message: string,
         public readonly meta?: Meta,
-        public readonly cause?: ExceptionCause
+        public readonly cause?: ExceptionCause,
       ) {
         super(message, meta ? Object.freeze(meta) : meta, cause, name);
       }

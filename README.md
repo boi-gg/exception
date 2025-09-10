@@ -50,11 +50,7 @@ throw new UnauthorizedError("You must be logged in to perform this action.");
 
 // Throw an exception with metadata and a cause
 const err = await api.get("/resource/123").catch((e) => e);
-throw new NotFoundError(
-  "Resource not found",
-  { path: "/resource/123", method: "GET" },
-  err,
-);
+throw new NotFoundError("Resource not found", { path: "/resource/123", method: "GET" }, err);
 ```
 
 ### Matching and Handling Exceptions
