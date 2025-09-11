@@ -6,7 +6,7 @@
 ![NPM Downloads](https://img.shields.io/npm/dy/@boi.gg/exception)
 ![Jest Coverage](https://img.shields.io/badge/coverage-100%25-green?logo=jest)
 
-A tiny, typed, and modular error-handling library for TypeScript.
+A tiny, typed, and modular exception-handling library for TypeScript.
 
 ## Features
 
@@ -33,11 +33,11 @@ The core of the library is the `Exception` class. You can create your own except
 import { Exception } from "@boi.gg/exception";
 
 // Create a simple exception kind
-const UnauthorizedError = Exception.kind("UnauthorizedError");
+const UnauthorizedException = Exception.kind("UnauthorizedException");
 
 // Create an exception kind with typed metadata
 type NotFoundMeta = { path: string; method: "GET" | "POST" | "PUT" | "DELETE" };
-const NotFoundError = Exception.kind<NotFoundMeta>("NotFoundError");
+const NotFoundException = Exception.kind<NotFoundMeta>("NotFoundException");
 ```
 
 ### Throwing Exceptions
@@ -46,32 +46,32 @@ You can then `throw` new instances of your custom exception kinds. The construct
 
 ```ts
 // Throw a simple exception
-throw new UnauthorizedError("You must be logged in to perform this action.");
+throw new UnauthorizedException("You must be logged in to perform this action.");
 
 // Throw an exception with metadata and a cause
 const err = await api.get("/resource/123").catch((e) => e);
-throw new NotFoundError("Resource not found", { path: "/resource/123", method: "GET" }, err);
+throw new NotFoundException("Resource not found", { path: "/resource/123", method: "GET" }, err);
 ```
 
 ### Matching and Handling Exceptions
 
-Use the static `.match()` method on an exception kind to check if an error is an instance of that kind. This is a type-safe way to handle specific exceptions.
+Use the static `.match()` method on an exception kind to check if an exception is an instance of that kind. This is a type-safe way to handle specific exceptions.
 
 ```ts
 import { Exception } from "@boi.gg/exception";
 
-const NotFoundError = Exception.kind<{ path: string }>("NotFoundError");
+const NotFoundException = Exception.kind<{ path: string }>("NotFoundException");
 
 try {
   // ... some code that might throw
-} catch (error) {
-  if (NotFoundError.match(error)) {
-    // `error` is now typed as an instance of NotFoundError
-    console.error(`Resource not found at path: ${error.meta.path}`);
-    console.error(`Original cause:`, error.cause);
+} catch (exception) {
+  if (NotFoundException.match(exception)) {
+    // `exception` is now typed as an instance of NotFoundException
+    console.error(`Resource not found at path: ${exception.meta.path}`);
+    console.error(`Original cause:`, exception.cause);
   } else {
     // Handle other errors or re-throw
-    throw error;
+    throw exception;
   }
 }
 ```
@@ -86,8 +86,8 @@ try {
 
 ### `new CustomException(message, meta?, cause?)`
 
-- `message`: `string` - The error message.
-- `meta` (optional): An object containing additional information about the error. The type is defined by the `Meta` generic when creating the kind. The `meta` object will be frozen.
+- `message`: `string` - The exception message.
+- `meta` (optional): An object containing additional information about the exception. The type is defined by the `Meta` generic when creating the kind. The `meta` object will be frozen.
 - `cause` (optional): `Error | string | undefined` - The original error that caused this exception.
 
 ### `CustomException.match(instance)`
