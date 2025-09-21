@@ -1,4 +1,4 @@
-import { expect, it, expectTypeOf, describe } from "vitest";
+import { describe, expect, expectTypeOf, it } from "vitest";
 
 import { Exception } from ".";
 
@@ -20,9 +20,11 @@ describe("Exception", () => {
     });
 
     it("should allow creating exceptions with specific meta types", () => {
+      // eslint-disable-next-line
       type Meta = { foo: "bar" };
       const CustomException = Exception.kind<Meta>("CustomException");
       const instance = new CustomException("message", { foo: "bar" });
+      // eslint-disable-next-line
       expectTypeOf(instance.meta!).toEqualTypeOf<Meta>();
       expect(instance.meta?.foo).toBe("bar");
     });

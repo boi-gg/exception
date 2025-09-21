@@ -2,9 +2,9 @@ export type ExceptionCause = Error | string | undefined;
 export type ExceptionMeta = Partial<Record<string, unknown>> | undefined;
 
 export class Exception extends Error {
+  public readonly cause?: ExceptionCause;
   public readonly message: string;
   public readonly meta?: ExceptionMeta;
-  public readonly cause?: ExceptionCause;
   public readonly name: string;
 
   private constructor(message: string, meta?: ExceptionMeta, cause?: ExceptionCause, name = "Exception") {
