@@ -5,7 +5,7 @@
   "private": false,
   "description": "A library to handle exceptions in a structured way.",
   "repository": {
-    "url": "https://github.com/tnfssc/exception"
+    "url": "git+https://github.com/tnfssc/exception.git"
   },
   "readme": "https://github.com/tnfssc/exception/blob/develop/README.md",
   "type": "module",
