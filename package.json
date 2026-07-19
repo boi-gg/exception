@@ -1,6 +1,6 @@
 {
   "name": "exception-kind",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "private": false,
   "description": "A library to handle exceptions in a structured way.",
