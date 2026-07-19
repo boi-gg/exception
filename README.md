@@ -1,9 +1,9 @@
 # [Exception](.)
 
-![npm bundle size](https://img.shields.io/bundlephobia/min/@boi.gg/exception)
-![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/@boi.gg/exception)
-![NPM Version](https://img.shields.io/npm/v/@boi.gg/exception)
-![NPM Downloads](https://img.shields.io/npm/dy/@boi.gg/exception)
+![npm bundle size](https://img.shields.io/bundlephobia/min/exception-kind)
+![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/exception-kind)
+![NPM Version](https://img.shields.io/npm/v/exception-kind)
+![NPM Downloads](https://img.shields.io/npm/dy/exception-kind)
 ![Jest Coverage](https://img.shields.io/badge/coverage-100%25-green?logo=jest)
 
 A tiny, typed, and modular exception-handling library for TypeScript.
@@ -18,7 +18,7 @@ A tiny, typed, and modular exception-handling library for TypeScript.
 ## Installation
 
 ```bash
-pnpm add @boi.gg/exception
+pnpm add exception-kind
 ```
 
 ## Usage
@@ -30,7 +30,7 @@ The core of the library is the `Exception` class. You can create your own except
 `Exception.kind` creates a new subclass of `Exception`. This allows you to group and handle exceptions by their kind.
 
 ```ts
-import { Exception } from "@boi.gg/exception";
+import { Exception } from "exception-kind";
 
 // Create a simple exception kind
 const UnauthorizedException = Exception.kind("UnauthorizedException");
@@ -58,7 +58,7 @@ throw new NotFoundException("Resource not found", { path: "/resource/123", metho
 Use the static `.match()` method on an exception kind to check if an exception is an instance of that kind. This is a type-safe way to handle specific exceptions.
 
 ```ts
-import { Exception } from "@boi.gg/exception";
+import { Exception } from "exception-kind";
 
 const NotFoundException = Exception.kind<{ path: string }>("NotFoundException");
 

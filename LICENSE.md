@@ -1,6 +1,6 @@
 # The MIT License (MIT)
 
-Copyright © `2026` `boi.gg`
+Copyright © `2026` `tnfssc`
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
